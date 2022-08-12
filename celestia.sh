@@ -10,7 +10,7 @@ echo -e "\e[0m"
 
 sleep 2
 
-sudo su
+
 if [ ! $NODENAMEC ]; then
 	read -p "Node İsminiz: " NODENAME
 	echo 'export NODENAME='$NODENAMEC >> $HOME/.bash_profile
