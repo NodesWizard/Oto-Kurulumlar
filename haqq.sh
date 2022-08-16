@@ -156,7 +156,7 @@ WantedBy=multi-user.target
 EOF
 
 
-# SERVISLERI BASLAT by Nodeist
+# SERVISLERI BASLAT  
 sudo systemctl daemon-reload
 sudo systemctl enable $HAQQ
 sudo systemctl restart $HAQQ
@@ -192,6 +192,6 @@ sleep 2
 systemctl restart haqqd
 sleep 2
 
-echo '=============== KURULUM TAMAM! by Nodeist ==================='
+echo '=============== KURULUM TAMAM! Nodeist'in Katkılarıyla.. [www.NodesWizard.com]  ==================='
 echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu haqqd -o cat\e[0m'
 echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${HAQQ_PORT}657/status | jq .result.sync_info\e[0m"
