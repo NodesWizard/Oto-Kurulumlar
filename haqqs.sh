@@ -190,7 +190,7 @@ s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"$SEEDS\"|" $HOME/.haqqd/config/config
 
 systemctl restart haqqd
 
-journalctl -fu haqqd -o cat
+
 echo '=============== KURULUM TAMAM! Nodeist Katkılarıyla ==================='
 echo '=============== www.NodesWizard.com ==================='
 echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjjournalctl -fu haqqd -o cat\e[0m'
