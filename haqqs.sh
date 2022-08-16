@@ -166,9 +166,9 @@ sudo systemctl restart $HAQQ
 source $HOME/.bash_profile
 
 
-sleep 1
+sleep 10
 systemctl stop haqqd
-sleep 1
+sleep 5
 
 
 #!/bin/bash
