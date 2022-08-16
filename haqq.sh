@@ -163,7 +163,7 @@ sudo systemctl restart $HAQQ
 
 
 source $HOME/.bash_profile
-#aykut başladı
+
 sleep 2
 systemctl stop haqqd
 sleep 2
