@@ -191,6 +191,7 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
 s|^(persistent_peers[[:space:]]+=[[:space:]]+).*$|\1\"$P_PEERS\"| ; \
 s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"$SEEDS\"|" $HOME/.haqqd/config/config.toml
 
-echo '=============== KURULUM TAMAM! [Nodeist KATKILARIYLA] www.NodesWizard.com   ==================='
-echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu haqqd -o cat\e[0m'
+echo '=============== KURULUM TAMAM! Nodeist Katkılarıyla ==================='
+echo '=============== www.NodesWizard.com ==================='
+echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjjournalctl -fu haqqd -o cat\e[0m'
 echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${HAQQ_PORT}657/status | jq .result.sync_info\e[0m"
