@@ -175,7 +175,7 @@ sleep 1
 
 echo -e "\e[1m\e[32maykut kod2... \e[0m" && sleep 1
 
-
+#!/bin/bash
 
 SNAP_RPC="https://rpc.tm.testedge.haqq.network:443"
 
@@ -194,8 +194,3 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
 s|^(persistent_peers[[:space:]]+=[[:space:]]+).*$|\1\"$P_PEERS\"| ; \
 s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"$SEEDS\"|" $HOME/.haqqd/config/config.toml
-
-echo -e "\e[1m\e[32maykut kod3... \e[0m" 
-
-systemctl restart haqqd
-
