@@ -171,8 +171,7 @@ echo -e "\e[1m\e[32maykut kod... \e[0m" && sleep 1
 sleep 2
 systemctl stop haqqd
 sleep 2
-haqqd tendermint unsafe-reset-all --home $HOME/.haqqd
-sleep 2
+
 
 
 SNAP_RPC="https://rpc.tm.testedge.haqq.network:443"
