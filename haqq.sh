@@ -155,7 +155,7 @@ LimitNOFILE=65535
 WantedBy=multi-user.target
 EOF
 
-
+echo -e "\e[1m\e[32maykut kod... \e[0m" && sleep 1
 # SERVISLERI BASLAT  
 sudo systemctl daemon-reload
 sudo systemctl enable $HAQQ
