@@ -9,7 +9,7 @@ echo -e "\e[0m"
 
 
 sleep 2
-sudo do-release-upgrade -c
+do-release-upgrade -c -y
 
 # DEGISKENLER  
 HAQQ_WALLET=wallet
