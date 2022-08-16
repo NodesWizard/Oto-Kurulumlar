@@ -9,7 +9,7 @@ echo -e "\e[0m"
 
 
 sleep 2
-do-release-upgrade 
+
 
 # DEGISKENLER  
 HAQQ_WALLET=wallet
@@ -58,7 +58,7 @@ echo -e "PORT NUMARANIZ: \e[1m\e[32m$HAQQ_PORT\e[0m"
 echo '================================================='
 
 sleep 2
-
+do-release-upgrade 
 
 # GUNCELLEMELER  
 echo -e "\e[1m\e[32m1. GUNCELLEMELER YUKLENIYOR... \e[0m" && sleep 1
