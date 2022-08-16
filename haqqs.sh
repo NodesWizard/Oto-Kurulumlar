@@ -7,11 +7,9 @@ echo " | |\  | |__| | |__| | |____ ____) |  \  /\  /   _| |_ / /__ / ____ \| | \
 echo " |_| \_|\____/|_____/|______|_____/    \/  \/   |_____/_____/_/    \_\_|  \_\_____/   ";
 echo -e "\e[0m"                                 
 
-
 sleep 2
 
-
-# DEGISKENLER  
+# DEGISKENLER by Nodeist
 HAQQ_WALLET=wallet
 HAQQ=haqqd
 HAQQ_ID=haqq_53211-1
@@ -60,31 +58,28 @@ echo '================================================='
 sleep 2
 
 
-# GUNCELLEMELER  
+# GUNCELLEMELER by Nodeist
 echo -e "\e[1m\e[32m1. GUNCELLEMELER YUKLENIYOR... \e[0m" && sleep 1
 sudo apt update && sudo apt upgrade -y
 
 
-# GEREKLI PAKETLER  
+# GEREKLI PAKETLER by Nodeist
 echo -e "\e[1m\e[32m2. GEREKLILIKLER YUKLENIYOR... \e[0m" && sleep 1
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu gcc git jq chrony liblz4-tool -y
-sudo apt install make clang pkg-config libssl-dev build-essential git jq ncdu bsdmainutils -y < "/dev/null"
 
-# GO KURULUMU  
-cd $HOME
-wget -O go1.18.2.linux-amd64.tar.gz https://go.dev/dl/go1.18.2.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.18.2.linux-amd64.tar.gz && rm go1.18.2.linux-amd64.tar.gz
-echo 'export GOROOT=/usr/local/go' >> $HOME/.bashrc
-echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
-echo 'export GO111MODULE=on' >> $HOME/.bashrc
-echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bashrc && . $HOME/.bashrc
+# GO KURULUMU by Nodeist
+ver="1.18.1"
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+rm "go$ver.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 go version
-
-
 
 sleep 1
 
-# KUTUPHANE KURULUMU  
+# KUTUPHANE KURULUMU by Nodeist
 echo -e "\e[1m\e[32m1. REPO YUKLENIYOR... \e[0m" && sleep 1
 cd $HOME
 git clone -b $HAQQ_VER $HAQQ_REPO
@@ -93,17 +88,17 @@ make install
 
 sleep 1
 
-# KONFIGURASYON  
+# KONFIGURASYON by Nodeist
 echo -e "\e[1m\e[32m1. KONFIGURASYONLAR AYARLANIYOR... \e[0m" && sleep 1
 $HAQQ config chain-id $HAQQ_ID
 $HAQQ config keyring-backend file
 $HAQQ init $HAQQ_NODENAME --chain-id $HAQQ_ID
 
-# ADDRBOOK ve GENESIS  
+# ADDRBOOK ve GENESIS by Nodeist
 wget $HAQQ_GENESIS -O $HOME/$HAQQ_FOLDER/config/genesis.json
 wget $HAQQ_ADDRBOOK -O $HOME/$HAQQ_FOLDER/config/addrbook.json
 
-# EŞLER VE TOHUMLAR  
+# EŞLER VE TOHUMLAR by Nodeist
 SEEDS="$HAQQ_SEEDS"
 PEERS="$HAQQ_PEERS"
 sed -i -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/$HAQQ_FOLDER/config/config.toml
@@ -122,22 +117,22 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/$HAQQ_FOLDER/config/app.toml
 
 
-# ÖZELLEŞTİRİLMİŞ PORTLAR  
+# ÖZELLEŞTİRİLMİŞ PORTLAR by Nodeist
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${HAQQ_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${HAQQ_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${HAQQ_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${HAQQ_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${HAQQ_PORT}660\"%" $HOME/$HAQQ_FOLDER/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${HAQQ_PORT}317\"%; s%^address = \":8080\"%address = \":${HAQQ_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${HAQQ_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${HAQQ_PORT}091\"%" $HOME/$HAQQ_FOLDER/config/app.toml
 sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:${HAQQ_PORT}657\"%" $HOME/$HAQQ_FOLDER/config/client.toml
 
-# PROMETHEUS AKTIVASYON  
+# PROMETHEUS AKTIVASYON by Nodeist
 sed -i -e "s/prometheus = false/prometheus = true/" $HOME/$HAQQ_FOLDER/config/config.toml
 
-# MINIMUM GAS AYARI  
+# MINIMUM GAS AYARI by Nodeist
 sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.00125$HAQQ_DENOM\"/" $HOME/$HAQQ_FOLDER/config/app.toml
 
-# INDEXER AYARI  
+# INDEXER AYARI by Nodeist
 indexer="null" && \
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/$HAQQ_FOLDER/config/config.toml
 
-# RESET  
+# RESET by Nodeist
 $HAQQ tendermint unsafe-reset-all --home $HOME/$HAQQ_FOLDER
 
 echo -e "\e[1m\e[32m4. SERVIS BASLATILIYOR... \e[0m" && sleep 1
@@ -158,10 +153,11 @@ WantedBy=multi-user.target
 EOF
 
 
-# SERVISLERI BASLAT  
+# SERVISLERI BASLAT by Nodeist
 sudo systemctl daemon-reload
 sudo systemctl enable $HAQQ
 sudo systemctl restart $HAQQ
+
 
 source $HOME/.bash_profile
 sleep 10
