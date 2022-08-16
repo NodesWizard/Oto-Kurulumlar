@@ -9,6 +9,7 @@ echo -e "\e[0m"
 
 
 sleep 2
+sudo do-release-upgrade -c
 
 # DEGISKENLER  
 HAQQ_WALLET=wallet
@@ -78,6 +79,8 @@ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 echo 'export GO111MODULE=on' >> $HOME/.bashrc
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bashrc && . $HOME/.bashrc
 go version
+
+
 
 sleep 1
 
