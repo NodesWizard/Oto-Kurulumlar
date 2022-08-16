@@ -162,18 +162,16 @@ sudo systemctl enable $HAQQ
 sudo systemctl restart $HAQQ
 
 echo '=============== KURULUM TAMAM! by Nodeist ==================='
-echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjjournalctl -fu haqqd -o cat\e[0m'
+echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu haqqd -o cat\e[0m'
 echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${HAQQ_PORT}657/status | jq .result.sync_info\e[0m"
 
 source $HOME/.bash_profile
 
-echo -e "\e[1m\e[32maykut kod... \e[0m" && sleep 1
+
 sleep 1
 systemctl stop haqqd
 sleep 1
 
-
-echo -e "\e[1m\e[32maykut kod2... \e[0m" && sleep 1
 
 #!/bin/bash
 
