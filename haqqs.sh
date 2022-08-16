@@ -161,12 +161,14 @@ sudo systemctl enable $HAQQ
 sudo systemctl restart $HAQQ
 
 source $HOME/.bash_profile
-sleep 2
+sleep 10
 systemctl stop haqqd
+sleep 1
+cd $HOME
 sleep 1
 haqqd tendermint unsafe-reset-all --home $HOME/.haqqd
 
-
+sleep 1
 #!/bin/bash
 
 SNAP_RPC="https://rpc.tm.testedge.haqq.network:443"
@@ -187,7 +189,7 @@ s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
 s|^(persistent_peers[[:space:]]+=[[:space:]]+).*$|\1\"$P_PEERS\"| ; \
 s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"$SEEDS\"|" $HOME/.haqqd/config/config.toml
 
-
+sleep 1
 systemctl restart haqqd
 
 
