@@ -199,7 +199,3 @@ echo -e "\e[1m\e[32maykut kod3... \e[0m"
 
 systemctl restart haqqd
 
-
-echo '=============== KURULUM TAMAM! Nodeist'in Katkılarıyla.. [www.NodesWizard.com]  ==================='
-echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu haqqd -o cat\e[0m'
-echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${HAQQ_PORT}657/status | jq .result.sync_info\e[0m"
