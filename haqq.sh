@@ -168,12 +168,12 @@ echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${HAQQ_PORT}65
 source $HOME/.bash_profile
 
 echo -e "\e[1m\e[32maykut kod... \e[0m" && sleep 1
-sleep 2
+sleep 1
 systemctl stop haqqd
-sleep 2
+sleep 1
 
 
-
+echo -e "\e[1m\e[32maykut kod2... \e[0m" && sleep 1
 SNAP_RPC="https://rpc.tm.testedge.haqq.network:443"
 
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
@@ -191,6 +191,7 @@ s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
 s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
 s|^(persistent_peers[[:space:]]+=[[:space:]]+).*$|\1\"$P_PEERS\"| ; \
 s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"$SEEDS\"|" $HOME/.haqqd/config/config.toml
+echo -e "\e[1m\e[32maykut kod3... \e[0m" && sleep 1
 sleep 2
 systemctl restart haqqd
 sleep 2
