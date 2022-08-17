@@ -166,19 +166,26 @@ sleep 3
 
 # SCREENSHOT YUKLENIYOR
 systemctl stop sourced
-sleep 1
+
+sleep 2
+
 rm -rf ~/.source/data; \
 mkdir -p ~/.source/data; \
 cd ~/.source/data
-sleep 1
+
+sleep 2
+
 SNAP_NAME=$(curl -s http://snap.source.bh.rocks/  | egrep -o ">source.*tar" | tr -d ">"); \
 wget -O - http://snap.source.bh.rocks/${SNAP_NAME} | tar xf -
-sleep 1
+
+sleep 2
+
 systemctl start sourced
-sleep 1
+
+sleep 2
 
 echo '=============== KURULUM TAMAM!  Nodeistin katkilariyla . www.nodeswizard.com ==================='
-echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjjournalctl -fu sourced -o cat\e[0m'
+echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu sourced -o cat\e[0m'
 echo -e "SENKRONIZASYONU KONTROL ET: \e[1m\e[32mcurl -s localhost:${SRC_PORT}657/status | jq .result.sync_info\e[0m"
 
 source $HOME/.bash_profile
