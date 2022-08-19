@@ -162,47 +162,41 @@ sudo systemctl daemon-reload
 sudo systemctl enable $SRC
 sudo systemctl restart $SRC
 
-sleep 3
+sleep 4
 
 # SCREENSHOT YUKLENIYOR
 systemctl stop sourced
 
-sleep 2
+sleep 3
 
 sudo systemctl stop sourced
 rm -rf $HOME/.source/data/
 mkdir $HOME/.source/data/
 
-sleep 2
+sleep 3
 
 cd $HOME
 wget http://116.202.236.115:8000/sourcedata.tar.gz
 
-sleep 2
+sleep 4
 
 tar -C $HOME/ -zxvf sourcedata.tar.gz --strip-components 1
 
-sleep 2
+sleep 5
 
 wget -O $HOME/.source/data/priv_validator_state.json "https://raw.githubusercontent.com/obajay/StateSync-snapshots/main/priv_validator_state.json"
 cd && cat .source/data/priv_validator_state.json
 
-sleep 2
+sleep 5
 
 cd $HOME
 rm sourcedata.tar.gz
 
-sleep 2
+sleep 4
 
-sudo systemctl daemon-reload 
-
-sleep 1
-
-sudo systemctl enable sourced 
-
-sleep 1
-
-sudo systemctl restart sourced
+sudo systemctl daemon-reload && \
+sudo systemctl enable sourced && \
+sudo systemctl restart sourced && \
 
 echo '=============== KURULUM TAMAM!  Nodeistin katkilariyla . www.nodeswizard.com ==================='
 echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu sourced -o cat\e[0m'
