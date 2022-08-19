@@ -186,11 +186,6 @@ sleep 2
 
 wget -O $HOME/.source/data/priv_validator_state.json "https://raw.githubusercontent.com/obajay/StateSync-snapshots/main/priv_validator_state.json"
 cd && cat .source/data/priv_validator_state.json
-{
-  "height": "0",
-  "round": 0,
-  "step": 0
-}
 
 sleep 2
 
