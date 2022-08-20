@@ -9,9 +9,9 @@ echo -e "\e[0m"
 
 sleep 2
 
-sudo ufw enable -y
+sudo ufw enable
 
-sleep 2
+sleep 4
 
 sudo ufw allow 8080
 sudo ufw allow 80
