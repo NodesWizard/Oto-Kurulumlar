@@ -106,8 +106,8 @@ echo -e "Please backup key files located in \e[1m\e[32m~/$WORKSPACE/keys\e[0m an
 echo -e "\e[1m\e[32mVerify initial synchronization: \e[0m" 
 echo -e "\e[1m\e[39m    curl 127.0.0.1:9101/metrics 2> /dev/null | grep aptos_state_sync_version | grep type \n \e[0m" 
 
-echo -e "\e[1m\e[32mTo loglari bakmak icin: \e[0m" 
+echo -e "\e[1m\e[32m    loglari bakmak icin: \e[0m" 
 echo -e "\e[1m\e[39m    docker logs -f testnet-validator-1 --tail 50 \n \e[0m" 
 
-echo -e "\e[1m\e[32mTo keylerini ogrenmek icin kod: \e[0m" 
+echo -e "\e[1m\e[32m    keylerini ogrenmek icin kod: \e[0m" 
 echo -e "\e[1m\e[39m    cat ~/$WORKSPACE/keys/public-keys.yaml \n \e[0m" 
