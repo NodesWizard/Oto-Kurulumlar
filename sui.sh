@@ -38,6 +38,10 @@ sudo rm -rf sui.sh
 
 sleep 1
 
+sudo apt update && sudo apt upgrade -y
+
+sleep 1
+
 exists()
 {
   command -v "$1" >/dev/null 2>&1
