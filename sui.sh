@@ -16,7 +16,7 @@ sleep 2
 
 rm -rf $HOME/.sui /usr/local/bin/sui*
 
-sleep 3
+sleep 2
 
 rm -rf $HOME/.sui/db
 
@@ -24,19 +24,19 @@ sleep 2
 
 sudo rm -rf /var/sui/db
 
-sleep 2
+sleep 1
 
 sudo rm -rf sui
 
-sleep 2
+sleep 1
 
 sudo rm -rf .sui
 
-sleep 2
+sleep 1
 
 sudo rm -rf sui.sh
 
-sleep 2
+sleep 1
 
 exists()
 {
