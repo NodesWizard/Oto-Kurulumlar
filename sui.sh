@@ -12,31 +12,39 @@ sleep 1
 systemctl stop suid
 systemctl disable suid
 
-sleep 1
+sleep 2
 
 rm -rf $HOME/.sui /usr/local/bin/sui*
 
-sleep 1
+sleep 3
 
 rm -rf $HOME/.sui/db
 
-sleep 1
+sleep 2
 
 sudo rm -rf /var/sui/db
 
-sleep 1
+sleep 2
 
 sudo rm -rf sui
 
-sleep 1
+sleep 2
 
 sudo rm -rf .sui
 
-sleep 1
+sleep 2
 
 sudo rm -rf sui.sh
 
-sleep 1
+sleep 3
+
+apt install screen
+
+sleep 2
+
+screen -S yenisui
+
+sleep 2
 
 exists()
 {
