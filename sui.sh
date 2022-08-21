@@ -36,14 +36,6 @@ sleep 2
 
 sudo rm -rf sui.sh
 
-sleep 3
-
-apt install screen
-
-sleep 2
-
-screen -S yenisui
-
 sleep 2
 
 exists()
