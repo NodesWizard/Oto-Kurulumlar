@@ -98,6 +98,6 @@ systemctl restart suid
 
 sleep 2
 
-echo -e "\e[1m\e[32mhttps://node.sui.zvalid.com/ -- kontrol et -- TRANS BOLUMU 0 OLURSA ARADA FIXED SCRPTINI ÇALIŞTIR \e[0m"
+echo -e "\e[1m\e[32mhttps://node.sui.zvalid.com/ -- kontrol et -- TRANS BOLUMU 0 OLURSA FIXED SCRPTINI ÇALIŞTIR \e[0m"
 
 sleep 2
