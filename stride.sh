@@ -156,11 +156,29 @@ sudo systemctl restart strided
 sleep 1
 
 sudo systemctl stop strided
+
+sleep 1
+
 cd $HOME && rm -rf stride
+
+sleep 1
+
 git clone https://github.com/Stride-Labs/stride.git && cd stride
+
+sleep 1
+
 git checkout 90859d68d39b53333c303809ee0765add2e59dab
+
+sleep 1
+
 make build
+
+sleep 1
+
 sudo mv build/strided $(which strided)
+
+sleep 1
+
 sudo systemctl restart strided
 
 sleep 1
