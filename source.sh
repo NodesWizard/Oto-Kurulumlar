@@ -162,27 +162,34 @@ sudo systemctl daemon-reload
 sudo systemctl enable $SRC
 sudo systemctl restart $SRC
 
-sleep 3
+sleep 1
 
-# SCREENSHOT YUKLENIYOR
-systemctl stop sourced
+# install the node as standard, but do not launch. Then we delete the .data directory and create an empty directory
+sudo systemctl stop sourced
+rm -rf $HOME/.source/data/
+mkdir $HOME/.source/data/
 
-sleep 2
+# download archive
+cd $HOME
+wget http://116.202.236.115:8000/sourcedata.tar.gz
 
-rm -rf ~/.source/data; \
-mkdir -p ~/.source/data; \
-cd ~/.source/data
+# unpack the archive
+tar -C $HOME/ -zxvf sourcedata.tar.gz --strip-components 1
+# !! IMPORTANT POINT. If the validator was created earlier. Need to reset priv_validator_state.json  !!
+wget -O $HOME/.source/data/priv_validator_state.json "https://raw.githubusercontent.com/obajay/StateSync-snapshots/main/priv_validator_state.json"
+cd && cat .source/data/priv_validator_state.json
+{
+  "height": "0",
+  "round": 0,
+  "step": 0
+}
 
-sleep 2
-
-SNAP_NAME=$(curl -s http://snap.source.bh.rocks/  | egrep -o ">source.*tar" | tr -d ">"); \
-wget -O - http://snap.source.bh.rocks/${SNAP_NAME} | tar xf -
-
-sleep 2
-
-systemctl start sourced
-
-sleep 2
+# after unpacking, run the node
+# don't forget to delete the archive to save space
+cd $HOME
+rm sourcedata.tar.gz
+# start the node
+sudo systemctl restart sourced
 
 echo '=============== KURULUM TAMAM!  Nodeistin katkilariyla . www.nodeswizard.com ==================='
 echo -e 'LOGLARI KONTROL ET: \e[1m\e[32mjournalctl -fu sourced -o cat\e[0m'
