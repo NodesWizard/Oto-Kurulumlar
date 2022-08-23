@@ -153,6 +153,18 @@ sleep 1
 
 sudo systemctl restart strided
 
+sleep 1
+
+sudo systemctl stop strided
+cd $HOME && rm -rf stride
+git clone https://github.com/Stride-Labs/stride.git && cd stride
+git checkout 90859d68d39b53333c303809ee0765add2e59dab
+make build
+sudo mv build/strided $(which strided)
+sudo systemctl restart strided
+
+sleep 1
+
 echo '=============== KURULUM BITTI www.nodeswizard.com ==================='
 echo -e 'Loglari kontrol et: \e[1m\e[32mjournalctl -u strided -f -o cat\e[0m'
 echo -e "senkrazasyon kontrol: \e[1m\e[32mcurl -s localhost:${STRIDE_PORT}657/status | jq .result.sync_info\e[0m"
