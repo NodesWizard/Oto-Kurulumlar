@@ -139,8 +139,8 @@ rm -rf data
 
 sleep 1
 
-URL="https://snapshot.testnet.run/testnet/stride/STRIDE-TESTNET-4_2022-08-30.tar"
-wget -O - $URL | tar -xvf - -C $HOME/.stride/data
+URL="https://snapshot.testnet.run/testnet/gaia/GAIA_2022-08-27.tar"
+wget -O - $URL | tar -xvf - -C $HOME/.gaia/data
 
 sleep 1
 
