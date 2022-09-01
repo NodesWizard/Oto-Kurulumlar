@@ -139,21 +139,6 @@ sudo systemctl daemon-reload
 sudo systemctl enable celestia-appd
 sudo systemctl restart celestia-appd
 
-sleep 2
-
-cd $HOME
-rm -rf ~/.celestia-app/data
-mkdir -p ~/.celestia-app/data
-SNAP_NAME=$(curl -s https://snaps.qubelabs.io/celestia/ | \
-    egrep -o ">mamaki.*tar" | tr -d ">")
-wget -O - https://snaps.qubelabs.io/celestia/${SNAP_NAME} | tar xf - \
-    -C ~/.celestia-app/data/
-    
-
-sleep 2
-
-systemctl restart celestia-appd
-
 echo '=============== kurulum bitti ==================='
 echo -e 'logları kontrol etsss: \e[1m\e[32mjournalctl -u celestia-appd -f -o cat\e[0m'
 echo -e "false misin gontrol et: \e[1m\e[32mcurl -s localhost:${CELESTIA_PORT}657/status | jq .result.sync_info\e[0m"
