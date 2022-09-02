@@ -8,12 +8,12 @@ echo " | |\  | |__| | |__| | |____ ____) |  \  /\  /   _| |_ / /__ / ____ \| | \
 echo " |_| \_|\____/|_____/|______|_____/    \/  \/   |_____/_____/_/    \_\_|  \_\_____/   ";
 echo -e "\e[0m"
 
-sleep 2
 
-# set vars
-if [ ! $NODENAME ]; then
-	read -p "Node ismi girin: " NODENAME
-	echo 'export NODENAME='$NODENAME >> $HOME/.bash_profile
+sleep 1
+
+if [ ! $TIA_NODENAME ]; then
+	read -p "NODE ISMI YAZINIZ: " TIA_NODENAME
+	echo 'export TIA_NODENAME='$TIA_NODENAME >> $HOME/.bash_profile
 
 sleep 1
 
@@ -59,7 +59,7 @@ make install
 sleep 1
 
 cd $HOME
-celestia-appd init $NODENAME --chain-id mamaki
+celestia-appd init $TIA_NODENAME --chain-id mamaki
 
 sleep 1
 
