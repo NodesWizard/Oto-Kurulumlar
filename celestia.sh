@@ -11,9 +11,12 @@ echo -e "\e[0m"
 
 sleep 1
 
+
 if [ ! $TIA_NODENAME ]; then
 	read -p "NODE ISMI YAZINIZ: " TIA_NODENAME
 	echo 'export TIA_NODENAME='$TIA_NODENAME >> $HOME/.bash_profile
+fi
+
 
 sleep 1
 
