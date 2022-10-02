@@ -125,6 +125,39 @@ sudo systemctl daemon-reload
 sudo systemctl enable dewebd
 sudo systemctl restart dewebd
 
+sleep 2
+
+sudo apt update
+sudo apt install lz4 -y
+
+sleep 2
+
+sudo systemctl stop dewebd
+
+sleep 2
+
+cp $HOME/.deweb/data/priv_validator_state.json $HOME/.deweb/priv_validator_state.json.backup
+dewebd tendermint unsafe-reset-all --home $HOME/.deweb --keep-addr-book
+
+sleep 2
+
+rm -rf $HOME/.deweb/data 
+rm -rf $HOME/.deweb/wasm
+
+sleep 2
+
+SNAP_NAME=$(curl -s https://snapshots1-testnet.nodejumper.io/dws-testnet/ | egrep -o ">deweb-testnet-sirius.*\.tar.lz4" | tr -d ">")
+curl https://snapshots1-testnet.nodejumper.io/dws-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf - -C $HOME/.deweb
+
+sleep 2
+
+mv $HOME/.deweb/priv_validator_state.json.backup $HOME/.deweb/data/priv_validator_state.json
+
+sleep 2
+
+sudo systemctl restart dewebd
+
+
 echo '=============== SETUP FINISHED ==================='
 echo -e 'To check logs: \e[1m\e[32mjournalctl -u dewebd -f -o cat\e[0m'
 echo -e "To check sync status: \e[1m\e[32mcurl -s localhost:${DEWEB_PORT}657/status | jq .result.sync_info\e[0m"
