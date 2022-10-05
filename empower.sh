@@ -114,4 +114,3 @@ sudo systemctl restart empowerd
 printLine
 echo -e "LOG KONTROL:            ${CYAN}sudo journalctl -u $BINARY -f --no-hostname -o cat ${NC}"
 echo -e "SYNC KONTROL FALSE OLAYI: ${CYAN}$BINARY status 2>&1 | jq .SyncInfo.catching_up${NC}"
-echo -e "bisey degil:         ${CYAN}$CHEAT_SHEET${NC}"
