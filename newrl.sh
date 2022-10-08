@@ -18,6 +18,10 @@ sudo apt-get update && sudo apt-get upgrade -y
 
 sleep 1
 
+git clone https://github.com/git/git
+
+sleep 1
+
 sudo apt install -y build-essential libssl-dev libffi-dev git curl screen -y
 
 sleep 1
