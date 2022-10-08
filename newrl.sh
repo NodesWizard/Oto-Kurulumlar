@@ -31,7 +31,13 @@ sudo apt install python3-venv python3-pip -y
 sleep 2
 
 git clone https://github.com/newrlfoundation/newrl.git
+
+sleep 2
+
 cd newrl
+
+sleep 1
+
 scripts/install.sh testnet
 
 sleep 1
